@@ -34,6 +34,6 @@ char *put_number(int n);
  *
  * Return: pointer to the memory block, NULL if error
  */
-char *print_arg(char type, ...);
+char *get_arg(char type, ...);
 
 #endif
