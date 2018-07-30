@@ -49,11 +49,12 @@ void die_with_error(char *buffer, char *arg, int e);
  * concatenate format string and arg string to the output buffer
  * new memory will be allocated to the buffer, and old memory will be free
  * @buffer: address to the buffer pointer
+ * @format: current position of the format string from printf
  * @high: index of buffer string
  * @low: index of buffer string
  * @arg: arg string
  */
-void update_buffer(char **buffer, int high, int low, char *arg);
+void update_buffer(char **buffer, char *format, int high, int low, char *arg);
 
 /**
  * print_buffer - print out the buffer
