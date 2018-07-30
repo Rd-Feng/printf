@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 
 	if (!format)
 	{
-		exit(NULL_PTR);
+		return (-1);
 	}
 	low = 0;
 	high = 0;
@@ -47,15 +47,22 @@ int _printf(const char *format, ...)
 			case 'i':
 				arg = get_arg('d', va_arg(params, int));
 				break;
+			case '%':
+				arg = malloc(2);
+				arg[0] = '%';
+				arg[1] = '\0';
+				break;
 			default:/* unknown specifier */
 				va_end(params);
 				die_with_error(buffer, arg,
 					       WRONG_SPECIFIER);
+				return (-1);
 			}
 			if (!arg)
 			{
 				va_end(params);
 				die_with_error(buffer, arg, NULL_PTR);
+				return (-1);
 			}
 			ptr = (char *) format;
 			update_buffer(&buffer, ptr  + low, high, low, arg);
@@ -64,6 +71,7 @@ int _printf(const char *format, ...)
 			{
 				va_end(params);
 				die_with_error(buffer, arg, NULL_PTR);
+				return (-1);
 			}
 			free(arg);
 			arg = NULL;
@@ -82,6 +90,7 @@ int _printf(const char *format, ...)
 			{
 				va_end(params);
 				die_with_error(buffer, arg, NULL_PTR);
+				return (-1);
 			}
 			sum = print_buffer(buffer);
 			free(buffer);
@@ -102,7 +111,6 @@ void die_with_error(char *buffer, char *arg, int e)
 {
 	free(buffer);
 	free(arg);
-	exit(e);
 }
 /**
  * print_buffer - print out the buffer
@@ -115,5 +123,5 @@ int print_buffer(char *buffer)
 	int num = 0;
 
 	num = write(1, buffer, _strlen(buffer));
-	return (num - 1);
+	return (num);
 }
