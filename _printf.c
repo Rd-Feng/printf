@@ -15,22 +15,17 @@ int print_buffer(char *buffer);
  */
 int _printf(const char *format, ...)
 {
-	int low, high, sum = 0;
+	int low, high, sum = -1;
 	char *buffer = NULL, *arg = NULL, *ptr = NULL;
 	va_list params;
 
-	if (!format)
-	{
-		return (-1);
-	}
 	low = 0;
 	high = 0;
-	sum = 0;
 	va_start(params, format);
 	/* initialize buffer as an empty string */
 	buffer = malloc(sizeof(char));
 	*buffer = '\0';
-	while (1)
+	while (format)
 	{
 		if (format[high] == '%')
 		{
