@@ -95,7 +95,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	ptr[i + j] = '\0';
 	return (ptr);
 }
-#include <stdlib.h>
 /**
  *_strlen - returns the length of a string
  *@s: string
