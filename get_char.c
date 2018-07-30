@@ -1,4 +1,6 @@
-char *_putchar(char c)
+#include <stdlib.h>
+
+char *get_char(char c)
 {
 	char *ptr;
 	ptr = malloc(2);

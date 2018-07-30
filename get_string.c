@@ -1,6 +1,6 @@
-#include <unistd.h>
+#include <stdlib.h>
 
-char *_putstr(char *s)
+char *get_string(char *s)
 {
     char *ptr;
 	int i, j;
