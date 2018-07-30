@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "holberton.h"
 
-void die_with_error(char *buffer, char *arg, int e);
+void die_with_error(char *buffer, char *arg);
 
 int print_buffer(char *buffer);
 
@@ -49,14 +49,13 @@ int _printf(const char *format, ...)
 				break;
 			default:/* unknown specifier */
 				va_end(params);
-				die_with_error(buffer, arg,
-					       WRONG_SPECIFIER);
+				die_with_error(buffer, arg);
 				return (-1);
 			}
 			if (!arg)
 			{
 				va_end(params);
-				die_with_error(buffer, arg, NULL_PTR);
+				die_with_error(buffer, arg);
 				return (-1);
 			}
 			ptr = (char *) format;
@@ -65,7 +64,7 @@ int _printf(const char *format, ...)
 			if (!buffer)
 			{
 				va_end(params);
-				die_with_error(buffer, arg, NULL_PTR);
+				die_with_error(buffer, arg);
 				return (-1);
 			}
 			free(arg);
@@ -84,7 +83,7 @@ int _printf(const char *format, ...)
 			if (!buffer)
 			{
 				va_end(params);
-				die_with_error(buffer, arg, NULL_PTR);
+				die_with_error(buffer, arg);
 				return (-1);
 			}
 			sum = print_buffer(buffer);
@@ -102,7 +101,7 @@ int _printf(const char *format, ...)
  * @arg: argument buffer to be free
  * @e: error code to exit process
  */
-void die_with_error(char *buffer, char *arg, int e)
+void die_with_error(char *buffer, char *arg)
 {
 	free(buffer);
 	free(arg);
