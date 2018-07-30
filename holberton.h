@@ -1,6 +1,9 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
 
+#define NULL_PTR -1
+#define WRONG_SPECIFIER -2
+
 /**
  * get_char - put a character into a memory block allocated using malloc
  * The allocated memory should has two bytes: the character, and the
@@ -37,14 +40,6 @@ char *get_number(int n);
 char *get_arg(char type, ...);
 
 /**
- * die_with_error - free memory and exit process with exit code e
- * @buffer: output buffer to be free
- * @arg: argument buffer to be free
- * @e: error code to exit process
- */
-void die_with_error(char *buffer, char *arg, int e);
-
-/**
  * update_buffer - update the output buffer
  * concatenate format string and arg string to the output buffer
  * new memory will be allocated to the buffer, and old memory will be free
@@ -55,14 +50,6 @@ void die_with_error(char *buffer, char *arg, int e);
  * @arg: arg string
  */
 void update_buffer(char **buffer, char *format, int high, int low, char *arg);
-
-/**
- * print_buffer - print out the buffer
- * @buffer: buffer string
- *
- * Return: total number of characters printed
- */
-int print_buffer(char *buffer);
 
 char *str_concat(char *, char *);
 

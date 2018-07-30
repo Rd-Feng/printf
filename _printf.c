@@ -1,7 +1,22 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "holberton.h"
-#include "errorcode.h"
+
+/**
+ * die_with_error - free memory and exit process with exit code e
+ * @buffer: output buffer to be free
+ * @arg: argument buffer to be free
+ * @e: error code to exit process
+ */
+void die_with_error(char *buffer, char *arg, int e);
+
+/**
+ * print_buffer - print out the buffer
+ * @buffer: buffer string
+ *
+ * Return: total number of characters printed
+ */
+int print_buffer(char *buffer);
 
 /**
  * _printf - output text to standard output specified by format
@@ -14,6 +29,7 @@ int _printf(const char *format, ...)
 	int low, high, sum = 0;
 	char *buffer = NULL, *arg = NULL, *ptr = NULL;
 	va_list params;
+
 	if (!format)
 	{
 		exit(NULL_PTR);
@@ -71,7 +87,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			ptr = (char*) format;
+			ptr = (char *) format;
 			update_buffer(&buffer, ptr + low, high, low, NULL);
 			if (!buffer)
 			{
@@ -85,4 +101,19 @@ int _printf(const char *format, ...)
 		}
 	}
 	return (sum);
+}
+
+void die_with_error(char *buffer, char *arg, int e)
+{
+	free(buffer);
+	free(arg);
+	exit(e);
+}
+
+int print_buffer(char *buffer)
+{
+	int num = 0;
+
+	num = write(1, buffer, _strlen(buffer));
+	return (num);
 }
