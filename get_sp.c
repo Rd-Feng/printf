@@ -1,6 +1,3 @@
-/* These  functions are used for getting the specifiers */
-
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 /**
@@ -8,7 +5,6 @@
  * @c: char to be copied
  * Return: ptr of copied char
  */
-
 char *get_char(char c)
 {
 	char *ptr;
@@ -24,12 +20,11 @@ char *get_char(char c)
 }
 
 /**
- * get_str - returns a new duplicated string
+ * get_string - returns a new duplicated string
  * @s: string to be copied
  * Return: Null if string is null, else pointer of copied string
  */
-
-char *get_str(char *s)
+char *get_string(char *s)
 {
 	char *ptr;
 	int i, j;
@@ -54,7 +49,6 @@ char *get_str(char *s)
 	ptr[j] = '\0';
 	return (ptr);
 }
-
 
 /**
  * get_number - put integer into a memory block as string
