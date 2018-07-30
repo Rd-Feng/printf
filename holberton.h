@@ -57,4 +57,6 @@ char *string_nconcat(char *, char *, unsigned int);
 
 int _strlen(char *);
 
+int _printf(const char *, ...);
+
 #endif

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
 #include "holberton.h"
 
 /**
@@ -115,5 +116,5 @@ int print_buffer(char *buffer)
 	int num = 0;
 
 	num = write(1, buffer, _strlen(buffer));
-	return (num);
+	return (num - 1);
 }
