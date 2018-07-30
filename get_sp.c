@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 /**
  * get_char - returns a copied char
