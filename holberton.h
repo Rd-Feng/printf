@@ -64,4 +64,8 @@ void update_buffer(char **buffer, char *format, int high, int low, char *arg);
  */
 int print_buffer(char *buffer);
 
+char *str_concat(char *, char *);
+
+char *string_nconcat(char *, char *, unsigned int);
+
 #endif

@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "holberton.h"
 #include "errorcode.h"
+
 /**
  * _printf - output text to standard output specified by format
  * @format: directives for outputing text
@@ -11,9 +12,8 @@
 int _printf(const char *format, ...)
 {
 	int low, high, sum = 0;
-	char *buffer = NULL, *arg = NULL;
+	char *buffer = NULL, *arg = NULL, *ptr = NULL;
 	va_list params;
-
 	if (!format)
 	{
 		exit(NULL_PTR);
@@ -52,7 +52,9 @@ int _printf(const char *format, ...)
 				va_end(params);
 				die_with_error(buffer, arg, NULL_PTR);
 			}
-			update_buffer(&buffer, format + low, high, low, arg);
+			ptr = (char *) format;
+			update_buffer(&buffer, ptr  + low, high, low, arg);
+			ptr = NULL;
 			if (!buffer)
 			{
 				va_end(params);
@@ -69,7 +71,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			update_buffer(&buffer, high, low, NULL);
+			ptr = (char*) format;
+			update_buffer(&buffer, ptr + low, high, low, NULL);
 			if (!buffer)
 			{
 				va_end(params);
