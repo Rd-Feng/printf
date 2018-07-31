@@ -22,6 +22,11 @@ int _printf(const char *format, ...)
 	char buffer[BUFFER_SIZE] = {0};
 	va_list params;
 
+	/* special case only one % sign */
+	if (_strlen(format) == 1 && format[0] = '%')
+	{
+		return (-1);
+	}
 	high = 0;
 	va_start(params, format);
 	while (format)
