@@ -62,9 +62,7 @@ int _printf(const char *format, ...)
 				arg[1] = '\0';
 				break;
 			case '\0':
-				buffer[index] = '%';
-				index++;
-				continue;
+				return (-1);
 			default:/* unknown specifier */
 				arg = malloc(3);
 				arg[0] = '%';
