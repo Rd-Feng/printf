@@ -48,9 +48,10 @@ int _printf(const char *format, ...)
 				arg[1] = '\0';
 				break;
 			default:/* unknown specifier */
-				va_end(params);
-				die_with_error(buffer, arg);
-				return (-1);
+				arg = malloc(3);
+				arg[0] = '%';
+				arg[1] = format[high];
+				arg[2] = '\0';
 			}
 			if (!arg)
 			{
@@ -115,6 +116,6 @@ int print_buffer(char *buffer)
 {
 	int num = 0;
 
-	num = write(1, buffer, _strlen(buffer));
+	num = write(1, buffer, _strlen(buffer) + 1);
 	return (num);
 }
