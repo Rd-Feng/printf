@@ -22,6 +22,8 @@ char *get_arg(char type, ...)
 	case 'd':
 	case 'i':
 		return (get_number(va_arg(params, int)));
+	case 'b':
+		return (get_binary(va_arg(params, int)));
 	default:
 		return (NULL);/* Error */
 	}
