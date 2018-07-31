@@ -70,7 +70,7 @@ char *get_binary(unsigned int n)
  */
 char *get_char(char c)
 {
-	char *ptr;
+	char *ptr = NULL;
 
 	ptr = malloc(2);
 	if (ptr == NULL)
@@ -89,12 +89,22 @@ char *get_char(char c)
  */
 char *get_string(char *s)
 {
-	char *ptr;
+	char *ptr = NULL;
 	int i, j;
 
 	if (s == NULL)
 	{
-		return (NULL);
+		ptr = malloc(7);
+		if (ptr == NULL)
+			return (NULL);
+		ptr[0] = '(';
+		ptr[1] = 'n';
+		ptr[2] = 'u';
+		ptr[3] = 'l';
+		ptr[4] = 'l';
+		ptr[5] = ')';
+		ptr[6] = '\0';
+		return (ptr);
 	}
 	for (i = 0; s[i] != '\0'; i++)
 	{
