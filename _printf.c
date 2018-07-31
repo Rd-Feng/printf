@@ -3,9 +3,11 @@
 #include <unistd.h>
 #include "holberton.h"
 
-void die_with_error(char *buffer, char *arg);
+#define BUFFER_SIZE 1024
 
-int print_buffer(char *buffer);
+int flush_buffer(char *buffer, int *index);
+
+int print_arg(char *arg);
 
 /**
  * _printf - output text to standard output specified by format
@@ -15,26 +17,29 @@ int print_buffer(char *buffer);
  */
 int _printf(const char *format, ...)
 {
-	int low, high, sum = -1;
-	char *buffer = NULL, *arg = NULL, *ptr = NULL;
+	int high, sum = 0, index = 0;
+	char *arg = NULL;
+	char buffer[BUFFER_SIZE] = {0};
 	va_list params;
 
-	low = 0;
 	high = 0;
 	va_start(params, format);
-	/* initialize buffer as an empty string */
-	buffer = malloc(sizeof(char));
-	*buffer = '\0';
 	while (format)
 	{
+		if (index == BUFFER_SIZE)
+		{
+			sum += flush_buffer(buffer, &index);
+		}
 		if (format[high] == '%')
 		{
 			high++;
 			switch (format[high])
 			{
 			case 'c':
-				arg = get_arg('c', va_arg(params, int));
-				break;
+				buffer[index] = (char) va_arg(params, int);
+				index++;
+				high++;
+				continue;
 			case 's':
 				arg = get_arg('s', va_arg(params, char*));
 				break;
@@ -56,66 +61,59 @@ int _printf(const char *format, ...)
 			if (!arg)
 			{
 				va_end(params);
-				die_with_error(buffer, arg);
+				free(arg);
 				return (-1);
 			}
-			ptr = (char *) format;
-			update_buffer(&buffer, ptr  + low, high, low, arg);
-			ptr = NULL;
-			if (!buffer)
-			{
-				va_end(params);
-				die_with_error(buffer, arg);
-				return (-1);
-			}
+			sum += flush_buffer(buffer, &index);
+			sum += print_arg(arg);
 			free(arg);
-			arg = NULL;
 			high++;
-			low = high;
 		}
 		else if (format[high] != '\0')
 		{
+			buffer[index] = format[high];
+			index++;
 			high++;
 		}
 		else
 		{
-			ptr = (char *) format;
-			update_buffer(&buffer, ptr + low, high, low, NULL);
-			if (!buffer)
-			{
-				va_end(params);
-				die_with_error(buffer, arg);
-				return (-1);
-			}
-			sum = print_buffer(buffer);
-			free(buffer);
+			sum += flush_buffer(buffer, &index);
 			va_end(params);
-			break;
+			return (sum);
 		}
 	}
 	return (sum);
 }
 
 /**
- * die_with_error - free memory and exit process with exit code e
- * @buffer: output buffer to be free
- * @arg: argument buffer to be free
- */
-void die_with_error(char *buffer, char *arg)
-{
-	free(buffer);
-	free(arg);
-}
-/**
- * print_buffer - print out the buffer
+ * flush_buffer - print out the buffer upto index and reset
  * @buffer: buffer string
+ * @index: index
  *
  * Return: total number of characters printed
  */
-int print_buffer(char *buffer)
+int flush_buffer(char *buffer, int *index)
 {
 	int num = 0;
 
-	num = write(1, buffer, _strlen(buffer));
+	num = write(1, buffer, *index);
+	*index = BUFFER_SIZE - 1;
+	while (*index >= 0)
+	{
+		buffer[*index] = 0;
+		*index -= 1;
+	}
+	*index = 0;
 	return (num);
+}
+
+/**
+ * print_arg - print argument string
+ * @arg: string
+ *
+ * Return: number of bytes printed
+ */
+int print_arg(char *arg)
+{
+	return (write(1, arg, _strlen(arg)));
 }
