@@ -116,6 +116,6 @@ int print_buffer(char *buffer)
 {
 	int num = 0;
 
-	num = write(1, buffer, _strlen(buffer) + 1);
+	num = write(1, buffer, _strlen(buffer));
 	return (num);
 }
