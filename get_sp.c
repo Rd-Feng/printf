@@ -4,6 +4,7 @@
  * @a: buffer
  * @size: size of array
  * @num: number of digits in the binary number
+ * Return: buffer
  */
 char *move_left(char *a, int size, int num)
 {
@@ -29,13 +30,13 @@ char *get_binary(unsigned int n)
 
 	if (n == 0)
 	{
-			ptr = malloc(2);
-			if (ptr)
-			{
-				ptr[0] = '0';
-				ptr[1] = '\0';
-			}
-			return (ptr);
+		ptr = malloc(2);
+		if (ptr)
+		{
+			ptr[0] = '0';
+			ptr[1] = '\0';
+		}
+		return (ptr);
 	}
 	size = sizeof(int) * 8 + 1;
 	ptr = malloc(size);
