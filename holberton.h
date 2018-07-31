@@ -40,6 +40,15 @@ char *get_number(int n);
 char *get_arg(char type, ...);
 
 /**
+ * get_binary - converts an unsigned int to binary
+ * @n: integer
+ *
+ * Return: pointer to binary
+ */
+char *get_binary(unsigned int n);
+
+
+/**
  * update_buffer - update the output buffer
  * concatenate format string and arg string to the output buffer
  * new memory will be allocated to the buffer, and old memory will be free

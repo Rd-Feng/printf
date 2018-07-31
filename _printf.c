@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "holberton.h"
-#include <stdio.h>
+
 #define BUFFER_SIZE 1024
 
 int flush_buffer(char *buffer, int *index);
@@ -52,6 +52,9 @@ int _printf(const char *format, ...)
 			case 'd':
 			case 'i':
 				arg = get_arg('d', va_arg(params, int));
+				break;
+			case 'b':
+				arg = get_arg('b', va_arg(params, int));
 				break;
 			case '%':
 				arg = malloc(2);
