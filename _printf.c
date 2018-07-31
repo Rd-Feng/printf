@@ -2,13 +2,14 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "holberton.h"
-
+#include <stdio.h>
 #define BUFFER_SIZE 1024
 
 int flush_buffer(char *buffer, int *index);
 
 int print_arg(char *arg);
 
+void get_type(char *format, int *index);
 /**
  * _printf - output text to standard output specified by format
  * @format: directives for outputing text
@@ -37,7 +38,7 @@ int _printf(const char *format, ...)
 		}
 		if (format[high] == '%')
 		{
-			high++;
+			get_type((char *)format, &high);
 			switch (format[high])
 			{
 			case 'c':
@@ -89,7 +90,6 @@ int _printf(const char *format, ...)
 	}
 	return (sum);
 }
-
 /**
  * flush_buffer - print out the buffer upto index and reset
  * @buffer: buffer string
@@ -111,7 +111,6 @@ int flush_buffer(char *buffer, int *index)
 	*index = 0;
 	return (num);
 }
-
 /**
  * print_arg - print argument string
  * @arg: string
@@ -121,4 +120,17 @@ int flush_buffer(char *buffer, int *index)
 int print_arg(char *arg)
 {
 	return (write(1, arg, _strlen(arg)));
+}
+/**
+ * get_type - get type from the specifier from format string
+ * This function skip spaces, find a specifier, and move index
+ * to the specifier
+ * @format: format string
+ * @index: current index of format string
+ */
+void get_type(char *format, int *index)
+{
+	do {
+		*index += 1;
+	} while (format[*index] == ' ');
 }
