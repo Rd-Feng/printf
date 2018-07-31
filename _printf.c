@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 	va_list params;
 
 	/* special case only one % sign */
-	if (_strlen(format) == 1 && format[0] = '%')
+	if (_strlen((char *)format) == 1 && format[0] == '%')
 	{
 		return (-1);
 	}
