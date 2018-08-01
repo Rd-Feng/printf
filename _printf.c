@@ -61,6 +61,9 @@ int _printf(const char *format, ...)
 			case 'r':
 				arg = get_arg('r', va_arg(params, char *));
 				break;
+			case 'R':
+				arg = get_arg('R', va_arg(params, char *));
+				break;
 			case '%':
 				arg = malloc(2);
 				arg[0] = '%';
