@@ -80,9 +80,14 @@ char *rot13(char *s)
 	return (s);
 }
 
+/**
+ * get_rot13 - get rot13
+ * @s: string
+ * Return: ptr to string
+ */
 char *get_rot13(char *s)
 {
- 	char *ptr = NULL;
+	char *ptr = NULL;
 
 	ptr = get_string(s);
 	if (s)
