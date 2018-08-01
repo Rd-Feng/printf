@@ -23,6 +23,8 @@ int _printf(const char *format, ...)
 	char buffer[BUFFER_SIZE] = {0};
 	va_list params;
 
+	if (!format)
+		return (-1);
 	/* special case only one % sign */
 	if (_strlen((char *)format) == 1 && format[0] == '%')
 	{
@@ -30,7 +32,7 @@ int _printf(const char *format, ...)
 	}
 	high = 0;
 	va_start(params, format);
-	while (format)
+	while (1)
 	{
 		if (index == BUFFER_SIZE)
 		{
