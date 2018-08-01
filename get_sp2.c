@@ -11,6 +11,10 @@ void rev_string(char *s)
 	int len;
 	char tmp;
 
+	if (s == NULL)
+	{
+		s = "(null)";
+	}
 	for (len = 0; s[len] != '\0'; len++)
 		;
 	head = 0;
@@ -38,4 +42,3 @@ char *get_rev(char *s)
 	rev_string(ptr);
 	return (ptr);
 }
-
