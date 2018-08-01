@@ -47,6 +47,12 @@ char *get_arg(char type, ...);
  */
 char *get_binary(unsigned int n);
 
+/**
+ * get_rev - reverse a string
+ * @s: string
+ * Return: string reversed
+ */
+char *get_rev(char *s);
 
 /**
  * update_buffer - update the output buffer
