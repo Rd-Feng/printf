@@ -47,18 +47,19 @@ char *get_arg(char type, ...);
  */
 char *get_binary(unsigned int n);
 
+/**
+ * get_rev - reverse a string
+ * @s: string
+ * Return: string reversed
+ */
+char *get_rev(char *s);
 
 /**
- * update_buffer - update the output buffer
- * concatenate format string and arg string to the output buffer
- * new memory will be allocated to the buffer, and old memory will be free
- * @buffer: address to the buffer pointer
- * @format: current position of the format string from printf
- * @high: index of buffer string
- * @low: index of buffer string
- * @arg: arg string
+ * get_rot13 - rot13 as a string
+ * @s: string
+ * Return: rot13
  */
-void update_buffer(char **buffer, char *format, int high, int low, char *arg);
+char *get_rot13(char *s);
 
 char *str_concat(char *, char *);
 

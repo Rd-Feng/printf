@@ -24,6 +24,10 @@ char *get_arg(char type, ...)
 		return (get_number(va_arg(params, int)));
 	case 'b':
 		return (get_binary(va_arg(params, int)));
+	case 'r':
+		return (get_rev(va_arg(params, char *)));
+	case 'R':
+		return (get_rot13(va_arg(params, char *)));
 	default:
 		return (NULL);/* Error */
 	}
