@@ -11,7 +11,7 @@
 .SH DESCRIPTION
 
 .SS Synopsis
-The _printf function is a simplified version of printf. It formats and prints data to the standard output.
+The _printf function is a simplified version of printf. It formats and prints data to the standard output for chars, integers, percent signs, strings, and binary numbers.
 
 .SS Return value
 Upon successful return, the fuction returns the number of characters printed, except for the null byte character.
@@ -45,6 +45,14 @@ Prints a string of characters. The
 .I const char *
 argument is expected to be a pointer to an array of character type (pointer to a string).
 Characters from the array are written up to the end of the length excluding the null byte '\0'.
+
+.B b
+
+Prints a binary number converted from an unsigned int argument.
+
+.B %
+
+Prints a percent sign.
 
 
 .SH EXAMPLE
