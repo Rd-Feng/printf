@@ -8,6 +8,7 @@ where `const char *format` is a character string composed of zero or more direct
 * s
 * d
 * i
+* b
 
 It works the same as the C standard library function `printf` except the following:
 * It doesn't provide the buffer handling of the C library `printf` function
@@ -18,9 +19,9 @@ It works the same as the C standard library function `printf` except the followi
 
 ### Requirements
 The followings are the requirements of this project:
-* All files will be compiled on `Ubuntu 14.04 LTS`
+* All files will be compiled on `Ubuntu 16.04 LTS`
 * programs and functions will be compiled with `gcc 4.8.4` using the flags `-Wall -Werror -Wextra and -pedantic`
-* All your files should end with a new line
+* All files should end with a new line
 * A README.md file, at the root of the folder of the project is mandatory
 * All code should use the [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * Usage of global variables is not allowed
