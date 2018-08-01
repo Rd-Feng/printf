@@ -38,9 +38,11 @@ char *get_rev(char *s)
 {
 	char *ptr = NULL;
 
-	if (!ptr)
-		return (NULL);
 	ptr = get_string(s);
+	if (!ptr)
+	{
+		return (NULL);
+	}
 	if (s)
 	{
 		rev_string(ptr);
