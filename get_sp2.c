@@ -36,11 +36,14 @@ void rev_string(char *s)
  */
 char *get_rev(char *s)
 {
-	char *ptr = NULL;
+		char *ptr = NULL;
 
-	ptr = get_string(s);
-	rev_string(ptr);
-	return (ptr);
+		ptr = get_string(s);
+		if (s)
+		{
+			rev_string(ptr);
+		}
+		return (ptr);
 }
 
 /**
@@ -54,15 +57,15 @@ char *rot13(char *s)
 	char *ptr;
 	int i;
 	char c[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-		    'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-		    'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-		    'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-		    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+			'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+			'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+			'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+			'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 	char r[] = {'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-		    'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
-		    'j', 'k', 'l', 'm', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-		    'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E',
-		    'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'};
+			'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+			'j', 'k', 'l', 'm', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+			'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E',
+			'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'};
 	for (ptr = s; *ptr != '\0'; ptr++)
 	{
 		for (i = 0; i < 52; i++)
@@ -77,12 +80,14 @@ char *rot13(char *s)
 	return (s);
 }
 
-/**
- * get_rot13 - rot13 as a string
- * @s: string
- * Return: rot13
- */
 char *get_rot13(char *s)
 {
-	return (rot13(get_string(s)));
+ 	char *ptr = NULL;
+
+	ptr = get_string(s);
+	if (s)
+	{
+		rot13(ptr);
+	}
+	return (ptr);
 }
