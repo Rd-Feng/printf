@@ -36,14 +36,16 @@ void rev_string(char *s)
  */
 char *get_rev(char *s)
 {
-		char *ptr = NULL;
+	char *ptr = NULL;
 
-		ptr = get_string(s);
-		if (s)
-		{
-			rev_string(ptr);
-		}
-		return (ptr);
+	if (!ptr)
+		return (NULL);
+	ptr = get_string(s);
+	if (s)
+	{
+		rev_string(ptr);
+	}
+	return (ptr);
 }
 
 /**
@@ -90,6 +92,8 @@ char *get_rot13(char *s)
 	char *ptr = NULL;
 
 	ptr = get_string(s);
+	if (!ptr)
+		return (NULL);
 	if (s)
 	{
 		rot13(ptr);
